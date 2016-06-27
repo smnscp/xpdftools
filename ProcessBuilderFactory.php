@@ -64,6 +64,8 @@ class ProcessBuilderFactory
                 return new PdfToTextProcessBuilder();
             case 'pdftohtml':
                 return new PdfToHtmlProcessBuilder();
+            case 'pdftoppm':
+                return new PdfToPpmProcessBuilder();
             default:
                 throw new Exception("Xpdf tools process builder for key '$key' does not exist.");
         }
