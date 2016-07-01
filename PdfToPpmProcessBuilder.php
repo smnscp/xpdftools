@@ -4,9 +4,9 @@ namespace Epubli\Pdf\XpdfTools;
 
 class PdfToPpmProcessBuilder extends BaseProcessBuilder
 {
-    public function __construct($executable = 'pdftoppm')
+    public function __construct($prefix = '', $executable = 'pdftoppm')
     {
-        parent::__construct($executable);
+        parent::__construct($prefix.$executable);
     }
 
     /**

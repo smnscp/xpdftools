@@ -4,9 +4,9 @@ namespace Epubli\Pdf\XpdfTools;
 
 class PdfToHtmlProcessBuilder extends BaseProcessBuilder
 {
-    public function __construct($executable = 'pdftohtml')
+    public function __construct($prefix = '', $executable = 'pdftohtml')
     {
-        parent::__construct($executable);
+        parent::__construct($prefix.$executable);
     }
 
     /**

@@ -46,6 +46,14 @@ namespace Epubli\Pdf\XpdfTools;
  */
 class ProcessBuilderFactory
 {
+    /** @var string The path where to find the executables. */
+    private $prefix;
+
+    public function __construct($prefix = '')
+    {
+        $this->prefix = $prefix;
+    }
+
     /**
      * @param string $key
      * @return BaseProcessBuilder
@@ -55,17 +63,17 @@ class ProcessBuilderFactory
     {
         switch ($key) {
             case 'pdfinfo':
-                return new PdfInfoProcessBuilder();
+                return new PdfInfoProcessBuilder($this->prefix);
             case 'pdffonts':
-                return new PdfFontsProcessBuilder();
+                return new PdfFontsProcessBuilder($this->prefix);
             case 'pdfimages':
-                return new PdfImagesProcessBuilder();
+                return new PdfImagesProcessBuilder($this->prefix);
             case 'pdftotext':
-                return new PdfToTextProcessBuilder();
+                return new PdfToTextProcessBuilder($this->prefix);
             case 'pdftohtml':
-                return new PdfToHtmlProcessBuilder();
+                return new PdfToHtmlProcessBuilder($this->prefix);
             case 'pdftoppm':
-                return new PdfToPpmProcessBuilder();
+                return new PdfToPpmProcessBuilder($this->prefix);
             default:
                 throw new Exception("Xpdf tools process builder for key '$key' does not exist.");
         }

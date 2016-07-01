@@ -4,8 +4,8 @@ namespace Epubli\Pdf\XpdfTools;
 
 class PdfInfoProcessBuilder extends BaseProcessBuilder
 {
-    public function __construct($executable = 'pdfinfo')
+    public function __construct($prefix = '', $executable = 'pdfinfo')
     {
-        parent::__construct($executable);
+        parent::__construct($prefix.$executable);
     }
 }

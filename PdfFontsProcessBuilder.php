@@ -4,8 +4,8 @@ namespace Epubli\Pdf\XpdfTools;
 
 class PdfFontsProcessBuilder extends BaseProcessBuilder
 {
-    public function __construct($executable = 'pdffonts')
+    public function __construct($prefix = '', $executable = 'pdffonts')
     {
-        parent::__construct($executable);
+        parent::__construct($prefix.$executable);
     }
 }
