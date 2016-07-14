@@ -43,10 +43,22 @@ class PdfInfoOutputParser
                     $result->setProducer($valueCleaned);
                     break;
                 case 'CreationDate':
-                    $result->setCreationDate(new \DateTime($valueCleaned));
+                    $creationDate = null;
+                    try {
+                        $creationDate = new \DateTime($valueCleaned);
+                    } catch (\Exception $ex) {
+                        // Do not care.
+                    }
+                    $result->setCreationDate($creationDate);
                     break;
                 case 'ModDate':
-                    $result->setModificationDate(new \DateTime($valueCleaned));
+                    $modificationDate = null;
+                    try {
+                        $modificationDate = new \DateTime($valueCleaned);
+                    } catch (\Exception $ex) {
+                        // Do not care.
+                    }
+                    $result->setModificationDate($modificationDate);
                     break;
                 case 'Tagged':
                     $result->setTagged($valueCleaned == 'yes');
