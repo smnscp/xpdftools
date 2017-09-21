@@ -32,7 +32,10 @@ EOF;
         $lines = explode(PHP_EOL, trim($pdfImagesOutput));
         $header = array_shift($lines).PHP_EOL.array_shift($lines);
 
-        if ($header != self::KNOWN_HEADER) {
+        $header = preg_replace('/[\x00-\x1F\x7F]/', '', $header);
+        $header2 = preg_replace('/[\x00-\x1F\x7F]/', '', self::KNOWN_HEADER);
+
+        if ($header != $header2) {
             throw new \Exception('Unexpected header while parsing pdfimages output.');
         }
 
