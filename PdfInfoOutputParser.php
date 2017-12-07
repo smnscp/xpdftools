@@ -86,11 +86,11 @@ class PdfInfoOutputParser
                     );
 
                     $result->setEncrypted('yes' == $matches[1]);
-                    $result->setEncryptionPrintAllowed('yes' == $matches[4]);
-                    $result->setEncryptionCopyAllowed('yes' == $matches[6]);
-                    $result->setEncryptionChangeAllowed('yes' == $matches[8]);
-                    $result->setEncryptionAddNotesAllowed('yes' == $matches[10]);
-                    $result->setEncryptionAlgorithm($matches[12]);
+                    $result->setEncryptionPrintAllowed(isset($matches[4]) && 'yes' == $matches[4]);
+                    $result->setEncryptionCopyAllowed(isset($matches[6]) && 'yes' == $matches[6]);
+                    $result->setEncryptionChangeAllowed(isset($matches[8]) && 'yes' == $matches[8]);
+                    $result->setEncryptionAddNotesAllowed(isset($matches[10]) && 'yes' == $matches[10]);
+                    $result->setEncryptionAlgorithm(isset($matches[12]) ? $matches[12] : null);
                     break;
                 case 'Page size':
                     $valueCleaned = str_replace('pts', '', $valueCleaned);
