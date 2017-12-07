@@ -79,7 +79,18 @@ class PdfInfoOutputParser
                     $result->setPagesTotal((int)$valueCleaned);
                     break;
                 case 'Encrypted':
-                    $result->setEncrypted($valueCleaned == 'yes');
+                    preg_match(
+                        '/(no|yes)\s*(\((print:(yes|no))\s*(copy:(yes|no))\s*(change:(yes|no))\s*(addNotes:(yes|no))\s*(algorithm:(\w+))?.*\))?/',
+                        $valueCleaned,
+                        $matches
+                    );
+
+                    $result->setEncrypted('yes' == $matches[1]);
+                    $result->setEncryptionPrintAllowed('yes' == $matches[4]);
+                    $result->setEncryptionCopyAllowed('yes' == $matches[6]);
+                    $result->setEncryptionChangeAllowed('yes' == $matches[8]);
+                    $result->setEncryptionAddNotesAllowed('yes' == $matches[10]);
+                    $result->setEncryptionAlgorithm($matches[12]);
                     break;
                 case 'Page size':
                     $valueCleaned = str_replace('pts', '', $valueCleaned);

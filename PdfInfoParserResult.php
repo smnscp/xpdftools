@@ -80,6 +80,31 @@ class PdfInfoParserResult
     private $encrypted;
 
     /**
+     * @var bool
+     */
+    private $encryptionPrintAllowed;
+
+    /**
+     * @var bool
+     */
+    private $encryptionCopyAllowed;
+
+    /**
+     * @var bool
+     */
+    private $encryptionChangeAllowed;
+
+    /**
+     * @var bool
+     */
+    private $encryptionAddNotesAllowed;
+
+    /**
+     * @var string
+     */
+    private $encryptionAlgorithm;
+
+    /**
      * @var string
      */
     private $permissions;
@@ -352,6 +377,86 @@ class PdfInfoParserResult
     public function setEncrypted($encrypted)
     {
         $this->encrypted = $encrypted;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEncryptionPrintAllowed()
+    {
+        return $this->encryptionPrintAllowed;
+    }
+
+    /**
+     * @param boolean $allowed
+     */
+    public function setEncryptionPrintAllowed($allowed)
+    {
+        $this->encryptionPrintAllowed = $allowed;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEncryptionCopyAllowed()
+    {
+        return $this->encryptionCopyAllowed;
+    }
+
+    /**
+     * @param boolean $allowed
+     */
+    public function setEncryptionCopyAllowed($allowed)
+    {
+        $this->encryptionCopyAllowed = $allowed;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEncryptionChangeAllowed()
+    {
+        return $this->encryptionChangeAllowed;
+    }
+
+    /**
+     * @param boolean $allowed
+     */
+    public function setEncryptionChangeAllowed($allowed)
+    {
+        $this->encryptionChangeAllowed = $allowed;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEncryptionAddNotesAllowed()
+    {
+        return $this->encryptionAddNotesAllowed;
+    }
+
+    /**
+     * @param boolean $allowed
+     */
+    public function setEncryptionAddNotesAllowed($allowed)
+    {
+        $this->encryptionAddNotesAllowed = $allowed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEncryptionAlgorithm()
+    {
+        return $this->encryptionAlgorithm;
+    }
+
+    /**
+     * @param string $algorithm
+     */
+    public function setEncryptionAlgorithm($algorithm)
+    {
+        $this->encryptionAlgorithm = $algorithm;
     }
 
     /**
