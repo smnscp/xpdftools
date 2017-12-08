@@ -15,7 +15,7 @@ class PdfInfoOutputParser
         $result = new PdfInfoParserResult();
 
         foreach ($lines as $line) {
-            $fields = preg_split('/: /', $line);
+            $fields = preg_split('/: /', $line, 2);
 
             if (empty($fields[1])) {
                 continue;
