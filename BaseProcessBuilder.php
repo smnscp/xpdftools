@@ -8,11 +8,6 @@ use Symfony\Component\Process\ProcessBuilder;
 abstract class BaseProcessBuilder
 {
     /**
-     * @var string Path to executable.
-     */
-    private $executable;
-
-    /**
      * @var ProcessBuilder
      */
     private $builder;
@@ -32,21 +27,8 @@ abstract class BaseProcessBuilder
      */
     public function __construct($executable)
     {
-        $this->executable = $executable;
-        $this->reset();
-    }
-
-    /**
-     * @return $this
-     */
-    public function reset()
-    {
         $this->builder = new ProcessBuilder();
-        $this->builder->setPrefix($this->executable);
-        $this->inputFile = null;
-        $this->outputFile = null;
-
-        return $this;
+        $this->builder->setPrefix($executable);
     }
 
     /**
