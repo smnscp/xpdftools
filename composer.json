@@ -1,0 +1,42 @@
+{
+    "name": "epubli/xpdftools",
+    "type": "library",
+    "description": "Wrapper for Xpdf Utils (a. k. a. Poppler Utils) based on Symfony Process Component.",
+    "keywords": [
+        "Xpdf",
+        "xpdf-utils",
+        "Poppler",
+        "poppler-utils",
+        "wrapper"
+    ],
+    "homepage": "https://github.com/epubli/xpdftools",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Schrape",
+            "email": "simon@epubli.com"
+        },
+        {
+            "name": "Epubli Developers",
+            "email": "devs@epubli.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Epubli\\Pdf\\XpdfTools\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../process"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "epubli/process": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=5.0"
+    }
+}
