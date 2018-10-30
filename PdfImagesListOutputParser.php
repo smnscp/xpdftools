@@ -16,10 +16,24 @@ namespace Epubli\Pdf\XpdfTools;
  */
 class PdfImagesListOutputParser
 {
-    const KNOWN_HEADER = <<<'EOF'
-page   num  type   width height color comp bpc  enc interp  object ID x-ppi y-ppi size ratio
---------------------------------------------------------------------------------------------
-EOF;
+    private $knownFields = [
+        'page',
+        'num',
+        'type',
+        'width',
+        'height',
+        'color',
+        'comp',
+        'bpc',
+        'enc',
+        'interp',
+        'object',
+        'ID',
+        'x-ppi',
+        'y-ppi',
+        'size',
+        'ratio',
+    ];
 
     /**
      * Parse the output of [pdfimages -list].
@@ -29,13 +43,11 @@ EOF;
      */
     public function parse($pdfImagesOutput)
     {
-        $lines = explode(PHP_EOL, trim($pdfImagesOutput));
-        $header = array_shift($lines).PHP_EOL.array_shift($lines);
+        $lines = preg_split('/\s*\n/', trim($pdfImagesOutput));
+        $header = preg_split('/\s+/', array_shift($lines));
+        $headerSeparator = array_shift($lines);
 
-        $header = preg_replace('/[\x00-\x1F\x7F]/', '', $header);
-        $header2 = preg_replace('/[\x00-\x1F\x7F]/', '', self::KNOWN_HEADER);
-
-        if ($header != $header2) {
+        if ($header != $this->knownFields || !preg_match('/-+/', $headerSeparator)) {
             throw new \Exception('Unexpected header while parsing pdfimages output.');
         }
 
