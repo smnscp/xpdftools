@@ -12,3 +12,8 @@ install:
 
 script:
     - "php vendor/bin/phpunit --coverage-clover=coverage.clover --coverage-text --verbose"
+
+addons:
+    apt:
+        packages:
+            - poppler-utils
